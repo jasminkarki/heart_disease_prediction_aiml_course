@@ -1,2 +1,2 @@
 # heart_disease_prediction_aiml_course
-This is theonducted to WHIC BIT students 
+Conducted to WHIC BIT students as part of Capstone Project of the AIML Training Course.
