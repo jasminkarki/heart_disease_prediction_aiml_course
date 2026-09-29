@@ -1,4 +1,4 @@
-# Heart Disease Prediction — AIML Course
+# Heart Disease Prediction: AIML Course
 
 This project was conducted with WHIC BIT students as part of the Capstone Project for the AIML Training Course.
 
@@ -6,7 +6,7 @@ The project uses a heart disease dataset sourced from Kaggle. By the end of the 
 
 ## Data Source
 
-The heart disease dataset is sourced from Kaggle: [Kaggle — Heart Disease Dataset](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset)
+The heart disease dataset is sourced from [Kaggle — Heart Disease Dataset](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset).
 
 ## Setting Up the Project
 1. Create a Virtual Environment
