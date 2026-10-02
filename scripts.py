@@ -66,3 +66,34 @@ plt.ylabel("Count")
 
 plt.tight_layout()
 plt.show()
+
+
+
+## Grid Search for Hyperparameter Tuning
+model_params = {
+    "logistic_regression": {
+        "model": LogisticRegression(max_iter=1000, random_state=42),
+        "params": {"C": [0.01, 0.1, 1.0, 10.0], "solver": ["liblinear", "lbfgs"]}
+    },
+    "knn": {
+        "model": KNeighborsClassifier(),
+        "params": {"n_neighbors": [3, 5, 7, 9, 11], "weights": ["uniform", "distance"]}
+    },
+    "decision_tree": {
+        "model": DecisionTreeClassifier(random_state=42),
+        "params": {"max_depth": [3, 5, 7, 10, None], "criterion": ["gini", "entropy"]}
+    },
+    "random_forest": {
+        "model": RandomForestClassifier(random_state=42),
+        "params": {"n_estimators": [50, 100, 200], "max_depth": [3, 5, 10, None]}
+    },
+    "svm": {
+        "model": SVC(probability=True, random_state=42),
+        "params": {"C": [0.1, 1, 10], "kernel": ["linear", "rbf"]}
+    }
+}
+
+# Transform test data using the fitted preprocessor
+X_test_preprocessed = preprocessor.transform(X_test)
+
+
