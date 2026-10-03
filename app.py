@@ -76,7 +76,7 @@ if st.button("Predict", type="primary"):
     # Display the prediction result
     st.subheader("Prediction Result")
     if prediction == 1:
-        st.error(f"Heart disease: Probability of disease is {probability:.2f}%.")
+        st.error(f"Heart disease: Probability of disease is {probability*100:.2f}%.")
     else:
         st.success(f"No heart disease. Probability of disease is {1 - probability:.2f}%.")
 
