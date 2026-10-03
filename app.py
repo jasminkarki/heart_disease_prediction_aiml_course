@@ -79,3 +79,24 @@ if st.button("Predict", type="primary"):
         st.error(f"Heart disease: Probability of disease is {probability:.2f}%.")
     else:
         st.success(f"No heart disease. Probability of disease is {1 - probability:.2f}%.")
+
+
+    # Display inspection details at the bottom
+    st.markdown("---")
+    st.subheader("Data Inspection & Pipeline Diagnostics")
+    
+    exp1, exp2 = st.tabs(["Raw Received Data", "Preprocessed Array Sent to Model"])
+    
+    with exp1:
+        st.write("This is the exact DataFrame constructed from your inputs:")
+        st.dataframe(input_data)
+        
+    with exp2:
+        st.write("This is the scaled and One-Hot Encoded feature matrix fed directly to the model:")
+        # Attempt to retrieve encoded feature names if available from ColumnTransformer
+        try:
+            feature_names = preprocessor.get_feature_names_out()
+            preprocessed_df = pd.DataFrame(input_preprocessed, columns=feature_names)
+            st.dataframe(preprocessed_df)
+        except Exception:
+            st.write(input_preprocessed)
