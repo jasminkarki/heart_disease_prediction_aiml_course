@@ -53,3 +53,29 @@ with col3:
     slope = st.selectbox("Slope of Peak Exercise ST", options=["1", "2", "3"])
     ca = st.number_input("Major Vessels Colored by Fluoroscopy (ca)", min_value=0, max_value=4, value=0)
     thal = st.selectbox("Thallium Stress Test (thal)", options=["3", "6", "7"])
+
+# Construct raw input DataFrame
+input_data = pd.DataFrame([{
+    "age": age, "sex": sex, "cp": str(cp), "trestbps": trestbps, "chol": chol,
+    "fbs": fbs, "restecg": str(restecg), "thalach": thalach, "exang": exang,
+    "oldpeak": oldpeak, "slope": str(slope), "ca": ca, "thal": str(thal)
+}])
+
+st.markdown("-----")
+
+if st.button("Predict", type="primary"):
+
+    # Preprocess the input data
+    input_preprocessed = preprocessor.transform(input_data)
+
+    # Run prediction with selected model
+    model = models[selected_model_name]
+    prediction = model.predict(input_preprocessed)[0]
+    probability =model.predict_proba(input_preprocessed)[0][1]  # Probability of class 1 (disease present)
+
+    # Display the prediction result
+    st.subheader("Prediction Result")
+    if prediction == 1:
+        st.error(f"Heart disease: Probability of disease is {probability:.2f}%.")
+    else:
+        st.success(f"No heart disease. Probability of disease is {1 - probability:.2f}%.")
